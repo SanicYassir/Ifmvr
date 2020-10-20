@@ -108,6 +108,10 @@ namespace ProjetRendezVous.Controllers
         {
             return View();
         }
+        public ActionResult Dashboard_login()
+        {
+            return View();
+        }
 
         // POST: Dashboard/Delete/5
         [HttpPost, ActionName("Delete")]

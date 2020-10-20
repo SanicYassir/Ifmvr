@@ -3,35 +3,59 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Institut Francais</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg pt-1 pb-1 ">
+        <a class="navbar-brand" href="@Url.Action("Index","Home")"> <img width="100" src="~/Content/assets/logo.png" alt="logo" /> </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-4">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">RDV accueil public</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Rabat</a>
+                        <a href="#" class="dropdown-item">Casablanca</a>
+                        <a href="#" class="dropdown-item">Fés</a>
+                        <a href="#" class="dropdown-item">Marrakech</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">RDV Atelier</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Atelier DAP</a>
+                        <a href="#" class="dropdown-item">Atelier Hors DAP</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <div class="jumbotron jumbotron-fluid bg-light pt-0 pb-1 text-white d-flex justify-content-center align-items">
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+         
         </div>
     </div>
-    <div class="container body-content">
+
+
+    <div class="container p-3 pt-0">
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - <a href="https://www.maroc.campusfrance.org/">Campus France</a></p>
         </footer>
     </div>
 

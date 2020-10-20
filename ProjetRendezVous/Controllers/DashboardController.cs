@@ -111,6 +111,9 @@ namespace ProjetRendezVous.Controllers
         public ActionResult Dashboard_login()
         {
             return View();
+        } public ActionResult Dashboard_reset_Password()
+        {
+            return View();
         }
 
         // POST: Dashboard/Delete/5

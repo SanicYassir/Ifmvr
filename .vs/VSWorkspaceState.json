@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ProjetRendezVous",
+    "\\ProjetRendezVous\\Content",
+    "\\ProjetRendezVous\\Content\\asstes",
+    "\\ProjetRendezVous\\Content\\asstes\\css",
+    "\\ProjetRendezVous\\Controllers",
+    "\\ProjetRendezVous\\Scripts",
+    "\\ProjetRendezVous\\Scripts\\js",
+    "\\ProjetRendezVous\\Views",
+    "\\ProjetRendezVous\\Views\\Account"
+  ],
+  "SelectedNode": "\\ProjetRendezVous\\Views\\Dashboard\\View.cshtml",
+  "PreviewInSolutionExplorer": false
+}

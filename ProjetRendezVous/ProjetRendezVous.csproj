@@ -188,6 +188,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\Campus France maroc jpg paris_1.jpg" />
+    <Content Include="Content\assets\logo.png" />
+    <Content Include="Content\assets\TTT.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

@@ -174,3 +174,5 @@ C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVou
 C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVous.csproj.CopyComplete
 C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVous.dll
 C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVous.pdb
+C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVous.Migrations.init.resources
+C:\Users\essah\Documents\GitHub\Ifmvr\ProjetRendezVous\obj\Debug\ProjetRendezVous.csproj.GenerateResource.cache

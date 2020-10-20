@@ -371,7 +371,7 @@
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\Dashboard\Edit.cshtml" />
     <Content Include="Views\Dashboard\Dashboardmain.cshtml" />
-    <Content Include="Views\Dashboard\View.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard_login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Dto\" />

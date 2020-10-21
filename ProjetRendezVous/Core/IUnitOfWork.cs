@@ -7,5 +7,6 @@ namespace ProjetRendezVous.Core
 {
     public class IUnitOfWork
     {
+
     }
 }

@@ -15,6 +15,9 @@ namespace ProjetRendezVous.Core.Models
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
 
+        public string TypeAtelier { get; set; }
+        public string TypeDeRdv { get; set; }
+
       
 
     }

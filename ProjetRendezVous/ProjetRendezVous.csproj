@@ -373,6 +373,7 @@
     <Content Include="Views\Dashboard\Edit.cshtml" />
     <Content Include="Views\Dashboard\Dashboardmain.cshtml" />
     <Content Include="Views\Dashboard\Dashboard_login.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard_reset_Password.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Dto\" />

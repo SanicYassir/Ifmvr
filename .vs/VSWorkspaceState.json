@@ -2,15 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\ProjetRendezVous",
-    "\\ProjetRendezVous\\Content",
     "\\ProjetRendezVous\\Content\\asstes",
     "\\ProjetRendezVous\\Content\\asstes\\css",
     "\\ProjetRendezVous\\Controllers",
-    "\\ProjetRendezVous\\Scripts",
     "\\ProjetRendezVous\\Scripts\\js",
     "\\ProjetRendezVous\\Views",
-    "\\ProjetRendezVous\\Views\\Account"
+    "\\ProjetRendezVous\\Views\\Account",
+    "\\ProjetRendezVous\\Views\\Dashboard"
   ],
-  "SelectedNode": "\\ProjetRendezVous\\Views\\Dashboard\\View.cshtml",
+  "SelectedNode": "\\ProjetRendezVous\\Views\\Dashboard\\Dashboardmain.cshtml",
   "PreviewInSolutionExplorer": false
 }

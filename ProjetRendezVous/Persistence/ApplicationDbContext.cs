@@ -23,6 +23,5 @@ namespace ProjetRendezVous.Persistence
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<ProjetRendezVous.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

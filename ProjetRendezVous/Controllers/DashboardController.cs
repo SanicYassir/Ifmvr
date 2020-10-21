@@ -4,106 +4,54 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using ProjetRendezVous.Models;
 using ProjetRendezVous.Persistence;
+using ProjetRendezVous.Persistence.Models;
 
 namespace ProjetRendezVous.Controllers
 {
     public class DashboardController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Dashboard
-        public ActionResult Index()
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public DashboardController()
         {
-            return View(db.ApplicationUsers.ToList());
+
+        }
+        public DashboardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
         }
 
-        // GET: Dashboard/Details/5
-        public ActionResult Details(string id)
+        public ApplicationSignInManager SignInManager
         {
-            if (id == null)
+            get
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
+            private set
             {
-                return HttpNotFound();
+                _signInManager = value;
             }
-            return View(applicationUser);
         }
 
-        // GET: Dashboard/Create
-        public ActionResult Create()
+        public ApplicationUserManager UserManager
         {
-            return View();
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
-        // POST: Dashboard/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ApplicationUsers.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(applicationUser);
-        }
-
-        // GET: Dashboard/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // POST: Dashboard/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(applicationUser);
-        }
-
-        // GET: Dashboard/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
         public ActionResult Dashboardmain()
         {
             return View();
@@ -111,29 +59,35 @@ namespace ProjetRendezVous.Controllers
         public ActionResult Dashboard_login()
         {
             return View();
-        } public ActionResult Dashboard_reset_Password()
+        }
+        public ActionResult Dashboard_reset_Password()
         {
             return View();
         }
-
-        // POST: Dashboard/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        [AllowAnonymous]
+        public ActionResult Dashboard_ForgetPassword()
         {
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            db.ApplicationUsers.Remove(applicationUser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return View();
         }
-
-        protected override void Dispose(bool disposing)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Dashboard_ForgetPassword(ForgotPasswordViewModel model)
         {
-            if (disposing)
+            if (ModelState.IsValid)
             {
-                db.Dispose();
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if(user == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+              await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
-            base.Dispose(disposing);
+
+            return View(model);
         }
     }
 }

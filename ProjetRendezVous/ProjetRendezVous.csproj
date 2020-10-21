@@ -366,13 +366,10 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Shared\_Layout_Dashboard.cshtml" />
-    <Content Include="Views\Dashboard\Create.cshtml" />
-    <Content Include="Views\Dashboard\Delete.cshtml" />
-    <Content Include="Views\Dashboard\Details.cshtml" />
-    <Content Include="Views\Dashboard\Edit.cshtml" />
     <Content Include="Views\Dashboard\Dashboardmain.cshtml" />
     <Content Include="Views\Dashboard\Dashboard_login.cshtml" />
     <Content Include="Views\Dashboard\Dashboard_reset_Password.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard_ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Dto\" />

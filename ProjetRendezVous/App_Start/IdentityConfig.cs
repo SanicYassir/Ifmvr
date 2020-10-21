@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -28,8 +30,20 @@ namespace ProjetRendezVous
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
+
+            MailAddress mail = new MailAddress("test123.Anas@gmail.com");
+            MailMessage mm = new MailMessage(mail.ToString(), message.Destination);
+            mm.IsBodyHtml = true;
+            mm.Subject = message.Subject;
+            mm.Body = message.Body;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            NetworkCredential NetworkCred = new NetworkCredential("test123.Anas@gmail.com", "essahl1@@");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = NetworkCred;
+            smtp.Port = 587;
+            return smtp.SendMailAsync(mm);
         }
     }
 
